@@ -76,6 +76,7 @@ class Snake():
     self.grid = grid
 
     self.body = [(0, 0), (1, 0), (2, 0)]
+    #for x, y in body: self.grid.matrix[x][y].switch_state(1)
     self.length = len(self.body)
     for x, y in self.body:
       grid.matrix[x][y].switch_state(1)
