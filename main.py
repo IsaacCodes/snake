@@ -30,8 +30,17 @@ class Block():
       2: Object(size, "green", pos)
     }
     self.state = 0
+    self.red_count = 0
   
   def switch_state(self, state: int):
+    if state == 1:
+      self.red_count += 1
+    elif self.state == 1:
+      self.red_count -= 1
+
+    if self.red_count >= 1:
+      state = 1
+
     objects.remove(self.states[self.state])
 
     self.state = state
@@ -68,6 +77,8 @@ class Snake():
 
     self.body = [(0, 0), (1, 0), (2, 0)]
     self.length = len(self.body)
+    for x, y in self.body:
+      grid.matrix[x][y].switch_state(1)
 
 
     self.dir = (1, 0)
